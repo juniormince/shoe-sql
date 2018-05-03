@@ -29,7 +29,6 @@ app.use(bodyParser.json());
 
 app.get('/shoe', function (req, res) {
     console.log('get thing');
-    res.send(Pool);
 });
 
 
