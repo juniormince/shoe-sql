@@ -26,6 +26,8 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 app.use(bodyParser.json());
 
+app.use(express.static('server/public'));
+
 
 app.get('/shoe', function (req, res) {
     console.log('get thing');
