@@ -30,12 +30,21 @@ app.use(express.static('server/public'));
 
 
 app.get('/shoe', function (req, res) {
-    console.log('get thing');
+    console.log('server get thing');
+    pool.query(`SELECT * FROM "shoes"`)
+        .then((results) => {
+            res.send(results.rows);
+        })
+        .catch((error) => {
+            console.log('error with SQL INSERT on shoe POST', error);
+            res.sendStatus(500);
+        });
 });
 
 
 app.post('/shoe', function (req, res) {
     const shoe = req.body;
+    console.log(shoe);
     pool.query(`INSERT INTO "shoes" ("name", "cost")
                 VALUES ($1, $2);`, [shoe.name, shoe.cost])
         .then((results) => {

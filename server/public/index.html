@@ -12,7 +12,22 @@
 <body ng-app="ShoeApp">
     <div ng-controller="ShoeController as vm">
     <h1>IF THE SHOE FITS</h1>
-        {{vm.message}}
+        <!-- {{vm.message}} -->
+
+        <ul>
+            <li ng-repeat="shoe in vm.shoeList.list">
+                {{shoe.name}} ----- {{shoe.cost}}
+            </li>
+        </ul>
+
+        <button id="listButton" ng-click="vm.getShoe()">list of shoes</button>
+
+        <input text="text" ng-model="vm.shoeName" placeholder="name of shoe"/> 
+        <!-- error in here ^^ -->
+        <input type="number" ng-model="vm.shoeCost" placeholder="cost of shoe" />
+
+        <button id="newShoeButton" ng-click="vm.newShoe(vm.shoeName)">add shoe</button>
+
 </div>
 </body>
 </html>
